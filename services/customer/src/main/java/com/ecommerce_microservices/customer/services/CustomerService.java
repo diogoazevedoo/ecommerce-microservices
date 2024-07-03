@@ -40,6 +40,11 @@ public class CustomerService {
                 .collect(Collectors.toList());
     }
 
+    public Boolean existsById(String customerId) {
+        return customerRepository.findById(customerId)
+                .isPresent();
+    }
+
     private void mergeCustomer(Customer customer, CustomerRequest request) {
         if (StringUtils.isNotBlank(request.firstName())) {
             customer.setFirstName(request.firstName());

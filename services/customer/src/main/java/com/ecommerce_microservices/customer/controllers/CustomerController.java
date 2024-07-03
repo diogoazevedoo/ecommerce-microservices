@@ -35,4 +35,11 @@ public class CustomerController {
     public ResponseEntity<List<CustomerResponse>> findAll() {
         return ResponseEntity.ok(customerService.findAllCustomers());
     }
+
+    @GetMapping("/exists/{customerId}")
+    public ResponseEntity<Boolean> existsById(
+            @PathVariable("customerId") String customerId
+    ) {
+        return ResponseEntity.ok(customerService.existsById(customerId));
+    }
 }

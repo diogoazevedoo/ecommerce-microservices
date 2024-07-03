@@ -1,4 +1,4 @@
-package com.ecommerce_microservices.customer.customer;
+package com.ecommerce_microservices.customer.domain;
 
 import lombok.*;
 import org.springframework.validation.annotation.Validated;

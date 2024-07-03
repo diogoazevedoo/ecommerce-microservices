@@ -1,5 +1,6 @@
-package com.ecommerce_microservices.customer.customer;
+package com.ecommerce_microservices.customer.dtos;
 
+import com.ecommerce_microservices.customer.domain.Address;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 

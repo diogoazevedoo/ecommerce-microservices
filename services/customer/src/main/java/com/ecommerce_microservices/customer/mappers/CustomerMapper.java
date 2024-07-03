@@ -1,5 +1,7 @@
-package com.ecommerce_microservices.customer.customer;
+package com.ecommerce_microservices.customer.mappers;
 
+import com.ecommerce_microservices.customer.dtos.CustomerRequest;
+import com.ecommerce_microservices.customer.domain.Customer;
 import org.springframework.stereotype.Service;
 
 @Service

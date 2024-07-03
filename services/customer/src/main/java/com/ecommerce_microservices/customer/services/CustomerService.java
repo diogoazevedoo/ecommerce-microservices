@@ -45,6 +45,14 @@ public class CustomerService {
                 .isPresent();
     }
 
+    public CustomerResponse findById(String customerId) {
+        return customerRepository.findById(customerId)
+                .map(customerMapper::fromCustomer)
+                .orElseThrow(() -> new CustomerNotFoundException(
+                        String.format("Cannot find customer with the provided ID:: %s", customerId)
+                ));
+    }
+
     private void mergeCustomer(Customer customer, CustomerRequest request) {
         if (StringUtils.isNotBlank(request.firstName())) {
             customer.setFirstName(request.firstName());

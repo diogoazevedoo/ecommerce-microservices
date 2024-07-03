@@ -1,11 +1,14 @@
 package com.ecommerce_microservices.customer.controllers;
 
 import com.ecommerce_microservices.customer.dtos.CustomerRequest;
+import com.ecommerce_microservices.customer.dtos.CustomerResponse;
 import com.ecommerce_microservices.customer.services.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/customer")
@@ -26,5 +29,10 @@ public class CustomerController {
     ) {
         customerService.updateCustomer(request);
         return ResponseEntity.accepted().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerResponse>> findAll() {
+        return ResponseEntity.ok(customerService.findAllCustomers());
     }
 }

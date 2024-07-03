@@ -53,6 +53,10 @@ public class CustomerService {
                 ));
     }
 
+    public void deleteCustomer(String customerId) {
+        customerRepository.deleteById(customerId);
+    }
+
     private void mergeCustomer(Customer customer, CustomerRequest request) {
         if (StringUtils.isNotBlank(request.firstName())) {
             customer.setFirstName(request.firstName());

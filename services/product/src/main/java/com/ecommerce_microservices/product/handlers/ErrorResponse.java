@@ -1,4 +1,4 @@
-package com.ecommerce_microservices.customer.dtos;
+package com.ecommerce_microservices.product.handlers;
 
 import java.util.Map;
 

@@ -1,6 +1,6 @@
 package com.ecommerce_microservices.customer.dtos;
 
-import com.ecommerce_microservices.customer.domain.Address;
+import com.ecommerce_microservices.customer.entities.Address;
 
 public record CustomerResponse(
         String id,

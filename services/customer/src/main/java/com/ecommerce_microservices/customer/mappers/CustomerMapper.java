@@ -1,7 +1,7 @@
 package com.ecommerce_microservices.customer.mappers;
 
 import com.ecommerce_microservices.customer.dtos.CustomerRequest;
-import com.ecommerce_microservices.customer.domain.Customer;
+import com.ecommerce_microservices.customer.entities.Customer;
 import com.ecommerce_microservices.customer.dtos.CustomerResponse;
 import org.springframework.stereotype.Service;
 

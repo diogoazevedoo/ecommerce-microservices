@@ -1,6 +1,6 @@
 package com.ecommerce_microservices.customer.services;
 
-import com.ecommerce_microservices.customer.domain.Customer;
+import com.ecommerce_microservices.customer.entities.Customer;
 import com.ecommerce_microservices.customer.dtos.CustomerResponse;
 import com.ecommerce_microservices.customer.exceptions.CustomerNotFoundException;
 import com.ecommerce_microservices.customer.mappers.CustomerMapper;

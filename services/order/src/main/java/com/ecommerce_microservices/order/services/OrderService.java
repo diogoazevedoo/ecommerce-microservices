@@ -1,15 +1,16 @@
 package com.ecommerce_microservices.order.services;
 
-import com.ecommerce_microservices.order.dtos.OrderConfirmation;
-import com.ecommerce_microservices.order.dtos.OrderLineRequest;
-import com.ecommerce_microservices.order.dtos.OrderRequest;
-import com.ecommerce_microservices.order.dtos.PurchaseRequest;
+import com.ecommerce_microservices.order.dtos.*;
 import com.ecommerce_microservices.order.exceptions.BusinessException;
 import com.ecommerce_microservices.order.mappers.OrderMapper;
 import com.ecommerce_microservices.order.producers.OrderProducer;
 import com.ecommerce_microservices.order.repositories.OrderRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -50,5 +51,20 @@ public class OrderService {
                 )
         );
         return order.getId();
+    }
+
+    public List<OrderResponse> findAll() {
+        return orderRepository.findAll()
+                .stream()
+                .map(orderMapper::fromOrder)
+                .collect(Collectors.toList());
+    }
+
+    public OrderResponse findById(Integer orderId) {
+        return orderRepository.findById(orderId)
+                .map(orderMapper::fromOrder)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("No order found with provided ID: %d", orderId)
+                ));
     }
 }

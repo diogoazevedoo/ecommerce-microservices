@@ -20,7 +20,9 @@ public class OrderService {
 
     private final CustomerClient customerClient;
     private final ProductClient productClient;
+    private final PaymentClient paymentClient;
     private final OrderLineService orderLineService;
+
     private final OrderProducer orderProducer;
 
     public Integer createOrder(OrderRequest request) {
@@ -40,7 +42,14 @@ public class OrderService {
                     )
             );
         }
-        //TODO: start payment process
+        var paymentRequest = new PaymentRequest(
+                request.amount(),
+                request.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+        );
+        paymentClient.requestOrderPayment(paymentRequest);
         orderProducer.sendOrderConfirmation(
                 new OrderConfirmation(
                         request.reference(),
